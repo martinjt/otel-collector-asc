@@ -1,0 +1,18 @@
+---
+dist:
+  module: github.com/open-telemetry/opentelemetry-collector
+  description: "Custom OpenTelemetry Collector"
+  include_core: true
+  otelcol_version: "0.63.1"
+  output_path: build
+exporters:
+  - import: go.opentelemetry.io/collector/exporter/otlpexporter
+    gomod: go.opentelemetry.io/collector v0.63.1
+  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/azuremonitorexporter v0.63.0"
+receivers:
+  - import: go.opentelemetry.io/collector/receiver/otlpreceiver
+    gomod: go.opentelemetry.io/collector v0.63.1
+processors:
+  - import: go.opentelemetry.io/collector/processor/batchprocessor
+    gomod: go.opentelemetry.io/collector v0.63.1
+  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/processor/filterprocessor v0.63.0"
